@@ -6,14 +6,6 @@ function getComputerChoice(){
         return "paper";
     return "scissors";
 }
-function getUserChoice(){
-    let userChoice= prompt("Enter your choice, Rock/Paper/Scissors");
-    userChoice= userChoice.toLowerCase();
-    if(userChoice=="rock"||userChoice=="paper"||userChoice=="scissors")
-        return(userChoice);
-    else
-        alert("Invalid input");
-}
 let resultDiv=document.getElementById('individualResult');
 function playRound(userChoice){
     let computerChoice= getComputerChoice();
@@ -22,31 +14,25 @@ function playRound(userChoice){
     {
         if(userChoice=="paper")
             {   resultDiv.textContent="Computer choice is "+computerChoice+", you win!";
-                //alert("Computer choice is "+computerChoice+", you win!");
                 return "player";
             }
         else if(userChoice=="scissors")
             {resultDiv.textContent="Computer choice is "+computerChoice+", Computer wins!";
-                //alert("Computer choice is "+computerChoice+", Computer wins!")
              return "computer";
             }
         else
             resultDiv.textContent="Computer choice is "+computerChoice+", its a draw!";
-            //alert("Computer choice is "+computerChoice+", its a draw!");
     }
     else if (computerChoice=="scissors")
     {
         if(userChoice=="paper")
             {resultDiv.textContent="Computer choice is "+computerChoice+", Computer wins!";
-                //alert("Computer choice is "+computerChoice+", Computer wins!")
              return "computer";
             }
         else if(userChoice=="scissors")
             resultDiv.textContent="Computer choice is "+computerChoice+", its a draw!";
-            //alert("Computer choice is "+computerChoice+", its a draw!");
         else
             {resultDiv.textContent="Computer choice is "+computerChoice+", you win!";
-                //alert("Computer choice is "+computerChoice+", you win!");
              return "player";
             }
     }
@@ -54,40 +40,15 @@ function playRound(userChoice){
     {
         if(userChoice=="paper")
             resultDiv.textContent="Computer choice is "+computerChoice+", its a draw!";
-            //alert("Computer choice is "+computerChoice+", its a draw!");
         else if(userChoice=="scissors")
             {resultDiv.textContent="Computer choice is "+computerChoice+", you win!";
-                //alert("Computer choice is "+computerChoice+", you win!");
              return "player";
             }
         else
             {resultDiv.textContent="Computer choice is "+computerChoice+", Computer wins!";
-                //alert("Computer choice is "+computerChoice+", Computer wins!")
              return "computer";
             };
     }
-}
-function game()
-{
-    /*let computer=0,
-        player=0;
-    for(let i=0; i<5; i++)
-    {
-        let userChoice= getUserChoice();
-        let winner= playRound(userChoice);
-        if (winner== "computer")
-            computer++;
-        else if (winner == "player")
-            player++;
-    }
-    if(computer>player)
-        alert("Overall winner is Computer!");
-    else if(computer<player)
-        alert("Overall winner is You!");
-    else
-        alert("Its a draw!");*/
-    let userChoice= getUserChoice();
-    let winner= playRound(userChoice);
 }
 let buttons= document.querySelectorAll('button');
 let scoreCountDiv=document.getElementById('scoreCount');
@@ -96,12 +57,11 @@ let computer=0,
     player=0,
     winner='',
     count=0;
-    let gameOver=false;
+let gameOver=false;
 buttons.forEach((button)=>{
-    if(!gameOver){
+    if(gameOver!=true){
             button.addEventListener('click', ()=>{
             count++;
-            console.log(count);
             if (count<=5)
             {
                 if(button.getAttribute('id')=="rock")
@@ -144,4 +104,5 @@ resetButton.addEventListener('click',()=>{
     scoreCountDiv.textContent="";
     overallWinnerDiv.textContent="";
     count=0;
+    gameOver=false;
 })
