@@ -16,42 +16,52 @@ function getUserChoice(){
 }
 function playRound(userChoice){
     let computerChoice= getComputerChoice();
+    let resultDiv=document.getElementById('results');
     if(computerChoice=="rock")
     {
         if(userChoice=="paper")
-            {alert("Computer choice is "+computerChoice+", you win!");
-             return "player";
+            {   resultDiv.textContent="Computer choice is "+computerChoice+", you win!";
+                //alert("Computer choice is "+computerChoice+", you win!");
+                return "player";
             }
         else if(userChoice=="scissors")
-            {alert("Computer choice is "+computerChoice+", Computer wins!")
+            {resultDiv.textContent="Computer choice is "+computerChoice+", Computer wins!";
+                //alert("Computer choice is "+computerChoice+", Computer wins!")
              return "computer";
             }
         else
-            alert("Computer choice is "+computerChoice+", its a draw!");
+            resultDiv.textContent="Computer choice is "+computerChoice+", its a draw!";
+            //alert("Computer choice is "+computerChoice+", its a draw!");
     }
     else if (computerChoice=="scissors")
     {
         if(userChoice=="paper")
-            {alert("Computer choice is "+computerChoice+", Computer wins!")
+            {resultDiv.textContent="Computer choice is "+computerChoice+", Computer wins!";
+                //alert("Computer choice is "+computerChoice+", Computer wins!")
              return "computer";
             }
         else if(userChoice=="scissors")
-            alert("Computer choice is "+computerChoice+", its a draw!");
+            resultDiv.textContent="Computer choice is "+computerChoice+", its a draw!";
+            //alert("Computer choice is "+computerChoice+", its a draw!");
         else
-            {alert("Computer choice is "+computerChoice+", you win!");
+            {resultDiv.textContent="Computer choice is "+computerChoice+", you win!";
+                //alert("Computer choice is "+computerChoice+", you win!");
              return "player";
             }
     }
     else
     {
         if(userChoice=="paper")
-            alert("Computer choice is "+computerChoice+", its a draw!");
+            resultDiv.textContent="Computer choice is "+computerChoice+", its a draw!";
+            //alert("Computer choice is "+computerChoice+", its a draw!");
         else if(userChoice=="scissors")
-            {alert("Computer choice is "+computerChoice+", you win!");
+            {resultDiv.textContent="Computer choice is "+computerChoice+", you win!";
+                //alert("Computer choice is "+computerChoice+", you win!");
              return "player";
             }
         else
-            {alert("Computer choice is "+computerChoice+", Computer wins!")
+            {resultDiv.textContent="Computer choice is "+computerChoice+", Computer wins!";
+                //alert("Computer choice is "+computerChoice+", Computer wins!")
              return "computer";
             };
     }
