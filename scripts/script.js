@@ -96,41 +96,29 @@ let computer=0,
     player=0,
     winner='',
     count=0;
+    let gameOver=false;
 buttons.forEach((button)=>{
-    button.addEventListener('click', ()=>{
-        count++;
-        if (count<5)
-        {
-        if(button.getAttribute('id')=="rock")
-            winner=playRound("rock");
-        else if(button.getAttribute('id')=="paper")
-            winner=playRound("paper");
-        else 
-            winner=playRound("scissors");
-        scoreCounter(winner);
-            /*if(winner== "computer")
-            computer++;
-            else if(winner== "player")
-                player++;
-            scoreCount.textContent="Player score= "+player+"\n Computer score= "+computer;
-
-            overallWinner.textContent="";*/
-        }
-        else
-            overallWinner()/*{
-            if(computer>player)
-                overallWinnerDiv.textContent="Overall winner is Computer!";
-            else if(computer<player)
-                overallWinnerDiv.textContent="Overall winner is You!";
-            else
-            overallWinnerDiv.textContent="Overall Result: Draw!";
-            computer=0, 
-            player=0;
-            resultDiv.textContent="";
-            scoreCountDiv.textContent="";
-            count=0;
-        }*/
-    })
+    if(!gameOver){
+            button.addEventListener('click', ()=>{
+            count++;
+            console.log(count);
+            if (count<=5)
+            {
+                if(button.getAttribute('id')=="rock")
+                    winner=playRound("rock");
+                else if(button.getAttribute('id')=="paper")
+                    winner=playRound("paper");
+                else 
+                    winner=playRound("scissors");
+                scoreCounter(winner);
+            }
+            if(count==5)
+            {
+                overallWinner();
+                gameOver=true;
+            }
+        })
+    }
 });
 function scoreCounter(winner){
     if(winner== "computer")
@@ -147,9 +135,13 @@ function overallWinner(){
         overallWinnerDiv.textContent="Overall winner is You!";
     else
         overallWinnerDiv.textContent="Overall Result: Draw!";
+}
+let resetButton= document.getElementById('reset');
+resetButton.addEventListener('click',()=>{
     computer=0, 
     player=0;
     resultDiv.textContent="";
     scoreCountDiv.textContent="";
+    overallWinnerDiv.textContent="";
     count=0;
-}
+})
