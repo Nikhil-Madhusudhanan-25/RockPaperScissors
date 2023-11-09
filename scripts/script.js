@@ -14,9 +14,10 @@ function getUserChoice(){
     else
         alert("Invalid input");
 }
+let resultDiv=document.getElementById('individualResult');
 function playRound(userChoice){
     let computerChoice= getComputerChoice();
-    let resultDiv=document.getElementById('results');
+
     if(computerChoice=="rock")
     {
         if(userChoice=="paper")
@@ -89,13 +90,44 @@ function game()
     let winner= playRound(userChoice);
 }
 let buttons= document.querySelectorAll('button');
+let scoreCount=document.getElementById('scoreCount');
+let overallWinner=document.getElementById('overallWinner');
+let computer=0,
+    player=0,
+    winner='',
+    count=0;
 buttons.forEach((button)=>{
     button.addEventListener('click', ()=>{
+        count++;
+        if (count<5)
+        {
         if(button.getAttribute('id')=="rock")
-            playRound("rock");
+            winner=playRound("rock");
         else if(button.getAttribute('id')=="paper")
-            playRound("paper");
+            winner=playRound("paper");
         else 
-            playRound("scissors");
+            winner=playRound("scissors");
+        
+            if(winner== "computer")
+            computer++;
+            else if(winner== "player")
+                player++;
+            scoreCount.textContent="Player score= "+player+"\n Computer score= "+computer;
+
+            overallWinner.textContent="";
+        }
+        else{
+            if(computer>player)
+                overallWinner.textContent="Overall winner is Computer!";
+            else if(computer<player)
+                overallWinner.textContent="Overall winner is You!";
+            else
+            overallWinner.textContent="Overall Result: Draw!";
+            computer=0, 
+            player=0;
+            resultDiv.textContent="";
+            scoreCount.textContent="";
+            count=0;
+        }
     })
 });
