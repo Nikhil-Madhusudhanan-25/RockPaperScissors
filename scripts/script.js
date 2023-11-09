@@ -58,7 +58,7 @@ function playRound(userChoice){
 }
 function game()
 {
-    let computer=0,
+    /*let computer=0,
         player=0;
     for(let i=0; i<5; i++)
     {
@@ -74,5 +74,7 @@ function game()
     else if(computer<player)
         alert("Overall winner is You!");
     else
-        alert("Its a draw!");
+        alert("Its a draw!");*/
+    let userChoice= getUserChoice();
+    let winner= playRound(userChoice);
 }
