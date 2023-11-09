@@ -90,8 +90,8 @@ function game()
     let winner= playRound(userChoice);
 }
 let buttons= document.querySelectorAll('button');
-let scoreCount=document.getElementById('scoreCount');
-let overallWinner=document.getElementById('overallWinner');
+let scoreCountDiv=document.getElementById('scoreCount');
+let overallWinnerDiv=document.getElementById('overallWinner');
 let computer=0,
     player=0,
     winner='',
@@ -107,27 +107,49 @@ buttons.forEach((button)=>{
             winner=playRound("paper");
         else 
             winner=playRound("scissors");
-        
-            if(winner== "computer")
+        scoreCounter(winner);
+            /*if(winner== "computer")
             computer++;
             else if(winner== "player")
                 player++;
             scoreCount.textContent="Player score= "+player+"\n Computer score= "+computer;
 
-            overallWinner.textContent="";
+            overallWinner.textContent="";*/
         }
-        else{
+        else
+            overallWinner()/*{
             if(computer>player)
-                overallWinner.textContent="Overall winner is Computer!";
+                overallWinnerDiv.textContent="Overall winner is Computer!";
             else if(computer<player)
-                overallWinner.textContent="Overall winner is You!";
+                overallWinnerDiv.textContent="Overall winner is You!";
             else
-            overallWinner.textContent="Overall Result: Draw!";
+            overallWinnerDiv.textContent="Overall Result: Draw!";
             computer=0, 
             player=0;
             resultDiv.textContent="";
-            scoreCount.textContent="";
+            scoreCountDiv.textContent="";
             count=0;
-        }
+        }*/
     })
 });
+function scoreCounter(winner){
+    if(winner== "computer")
+            computer++;
+    else if(winner== "player")
+                player++;
+    scoreCountDiv.textContent="Player score= "+player+"\n Computer score= "+computer;
+    overallWinnerDiv.textContent="";
+}
+function overallWinner(){
+    if(computer>player)
+        overallWinnerDiv.textContent="Overall winner is Computer!";
+    else if(computer<player)
+        overallWinnerDiv.textContent="Overall winner is You!";
+    else
+        overallWinnerDiv.textContent="Overall Result: Draw!";
+    computer=0, 
+    player=0;
+    resultDiv.textContent="";
+    scoreCountDiv.textContent="";
+    count=0;
+}
