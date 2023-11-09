@@ -78,3 +78,14 @@ function game()
     let userChoice= getUserChoice();
     let winner= playRound(userChoice);
 }
+let buttons= document.querySelectorAll('button');
+buttons.forEach((button)=>{
+    button.addEventListener('click', ()=>{
+        if(button.getAttribute('id')=="rock")
+            playRound("rock");
+        else if(button.getAttribute('id')=="paper")
+            playRound("paper");
+        else 
+            playRound("scissors");
+    })
+});
